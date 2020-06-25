@@ -1,5 +1,5 @@
 import { cartTypeAction } from "./cartType";
-import { addItemsToCart } from "./cartUtils";
+import { addItemsToCart, removeItemFromCart } from "./cartUtils";
 
 const INITIAL_STATE = {
   hidden: true,
@@ -17,6 +17,11 @@ const cartToggle = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         cartItems: addItemsToCart(state.cartItems, action.payload),
+      };
+    case cartTypeAction.REMOVE_ITEMS:
+      return {
+        ...state,
+        cartItems: removeItemFromCart(state.cartItems, action.payload),
       };
     case cartTypeAction.CLEAR_ITEM_FROM_CART:
       return {
