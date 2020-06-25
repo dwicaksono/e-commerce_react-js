@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import '../Shoppage/shoppage.scss'
-import CollectionPreview from '../../components/PreviewCollection/PreviewCollection'
-import SHOPDATA from './shopdata.js'
+import React from "react";
+import CollectionOverView from "../../components/collectionOverview/collectionOverview";
 
+import "../Shoppage/shoppage.scss";
 
-const ShopPage = () => {
-  const [shopdata, setShopdata] = useState([])
-  useEffect(() => {
-    setShopdata(SHOPDATA)
-  }, [])
-  return (
-    <div className='shop-page'>
-      {shopdata.map(({ id, ...otherCollection }) => (
-        <CollectionPreview key={id} {...otherCollection} />
-      ))}
-    </div>
-  )
-}
+const ShopPage = () => (
+  <div className="shop-page">
+    <CollectionOverView />
+  </div>
+);
 
-export default ShopPage
+export default ShopPage;
