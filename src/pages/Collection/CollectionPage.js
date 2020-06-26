@@ -4,10 +4,10 @@ import { selectCollections } from "../../redux/shop/shopSelector";
 import CollectionItem from "../../components/CollectionItem/CollectionItems";
 import "./collectionPage.scss";
 
-const CategoryPage = ({ collections }) => {
-  const { title, items } = collections;
+const CategoryPage = ({ collection }) => {
+  const { title, items } = collection;
   return (
-    <div className="category-page">
+    <div className="collection-page">
       <h2 className="title">{title}</h2>
       <div className="items">
         {items.map((item) => (
