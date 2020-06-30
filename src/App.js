@@ -21,11 +21,11 @@ class App extends React.Component {
   //   super();
   //   this.state = { currentUser: null };
   // }
-  unsubscribeDidMount = null;
+  unsubscribeFromAuth = null;
 
   componentDidMount() {
     const { setCurrentUser } = this.props;
-    this.unsubscribeDidMount = auth.onAuthStateChanged(async (userAuth) => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
@@ -35,15 +35,13 @@ class App extends React.Component {
             ...snapshot.data(),
           });
         });
-
-        // console.log(this.state);
       }
       setCurrentUser(userAuth);
     });
   }
 
   componentWillUnmount() {
-    this.unsubscribeDidMount();
+    this.unsubscribeFromAuth();
   }
 
   render() {
